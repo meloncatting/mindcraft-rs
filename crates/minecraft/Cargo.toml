@@ -1,0 +1,29 @@
+[package]
+name = "mindcraft-minecraft"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mindcraft-config = { path = "../config" }
+mindcraft-commands = { path = "../commands" }
+
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }
+tracing = { workspace = true }
+futures = { workspace = true }
+
+# Azalea: the Rust Minecraft bot library.
+# Supports MC 1.21.x. Uncomment + pin to a commit/tag for a stable build.
+# azalea = { git = "https://github.com/azalea-rs/azalea", features = ["pathfinder"] }
+#
+# For local dev without azalea, we compile a stub BotHandle.
+# Set feature "stub" to use the stub, "azalea" to use the real thing.
+
+[features]
+default = ["stub"]
+stub = []
+# azalea = ["dep:azalea"]

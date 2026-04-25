@@ -1,0 +1,16 @@
+[package]
+name = "mindcraft-commands"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mindcraft-config = { path = "../config" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+async-trait = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+regex = { workspace = true }
+once_cell = { workspace = true }

@@ -1,0 +1,27 @@
+services:
+  mindcraft:
+    build: .
+    ports:
+      - "8080:8080"     # MindServer UI + API
+      - "3000-3010:3000-3010"  # Bot viewer ports (one per agent)
+    volumes:
+      - ./settings.json:/app/settings.json:ro
+      - ./keys.json:/app/keys.json:ro
+      - ./profiles:/app/profiles:ro
+      - ./bots:/app/bots        # persistent memory + history
+    environment:
+      - RUST_LOG=info
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: unless-stopped
+
+  # Optional: local Minecraft server for testing
+  # minecraft:
+  #   image: itzg/minecraft-server
+  #   environment:
+  #     EULA: "TRUE"
+  #     VERSION: "1.21.1"
+  #     ONLINE_MODE: "false"
+  #   ports:
+  #     - "25565:25565"
